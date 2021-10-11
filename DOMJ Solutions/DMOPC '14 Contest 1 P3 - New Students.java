@@ -1,49 +1,56 @@
 import java.util.*;
+import java.io.*;
 
 public class Main {
-  public static void main(String[] args) {
-    Scanner sc = new Scanner(System.in);
 
-    int days = sc.nextInt();
-    sc.nextLine();
+    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+	static StringTokenizer st;
+    public static void main(String[] args) throws IOException {
+        int amount = readInt();
+        double total = 0;
+        for(int i = 0; i < amount; i++) {
+            total += readInt();
+        }
 
-    Loging[] l = new Loging[days];
+        int s = readInt();
+        for(int i = 0; i < s; i++) {
+            int num = readInt();
+            amount++;
+            total += num;
 
-    for(int i = 0; i < days; i++) {
-      int logs = sc.nextInt();
-      sc.nextLine();
-
-      l[i] = new Loging(logs, i);
-
-      for(int k = 0; k < logs; k++) {
-        l[i].data[k] = sc.nextInt();
-        sc.nextLine();
-      }
+            System.out.println(total/amount);
+        }
     }
 
-    for(int i = 0; i < days; i++) {
-      if(l[i].Sum() == 0) {
-        System.out.println("Weekend");
-        continue;
-      }
-      System.out.println("Day " + (i + 1) + ": " + l[i].Sum());
+    static boolean isPrime(int num) {
+        if(num <= 1) return false;
+        if(num % 2 == 0 && num != 2) return false;
+        for(int i = 3; i < Math.sqrt(num) + 1; i++) {
+            if(num % i == 0) {
+                return false;
+            }
+        }
+        return true;
     }
-  }
-}
-
-class Loging {
-  int[] data;
-  int code;
-  public Loging(int size, int code) {
-    data = new int[size];
-    this.code = code;
-  }
-
-  public int Sum() {
-    int ans = 0;
-    for(int i = 0; i < data.length; i++) {
-      ans += data[i];
-    }
-    return ans;
-  }
+    
+    static String next () throws IOException {
+		while (st == null || !st.hasMoreTokens())
+			st = new StringTokenizer(br.readLine().trim());
+		return st.nextToken();
+	}
+	static long readLong () throws IOException {
+		return Long.parseLong(next());
+	}
+	static int readInt () throws IOException {
+		return Integer.parseInt(next());
+	}
+	static double readDouble () throws IOException {
+		return Double.parseDouble(next());
+	}
+	static char readCharacter () throws IOException {
+		return next().charAt(0);
+	}
+	static String readLine () throws IOException {
+		return br.readLine().trim();
+	}
 }
