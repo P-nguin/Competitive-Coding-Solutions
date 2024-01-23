@@ -1,2 +1,4 @@
 # Competitive-Coding-Solutions
-Solutions, yes.
+Solutions(incomplete), yes.
+
+Here is my profile, https://dmoj.ca/user/mad_milk.
